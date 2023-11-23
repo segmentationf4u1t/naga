@@ -1,7 +1,7 @@
 import { Table } from "lucide-react"
 import { TableHeader, TableRow, TableHead, TableBody, TableCell } from "./ui/table"
 import { FC } from 'react';
-
+import { Check, X } from "lucide-react";
 type ModelData = {
   id: string;
   object: string;
@@ -31,6 +31,10 @@ const ModelTable: FC<ModelListProps> = ({ data }) => {
               {item.unit_costs ? `Input: ${item.unit_costs.input}, Output: ${item.unit_costs.output}` : 'N/A'}
             </TableCell>
             <TableCell className="text-right">
+            {item.allowed_for && (
+    item.allowed_for.includes('free') ? <Check color="green"/> : <X color="red"/>
+)}
+
             </TableCell>
           </TableRow>
         ))}
